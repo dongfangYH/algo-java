@@ -17,7 +17,7 @@ public class PrimeDetect {
             return true;
         }
 
-        // if a number greater than 2 and is an odd number, it can be a prime number
+        // if a number greater than 2 and is an even number, it can't be a prime number
         if (number % 2 == 0){
             return false;
         }
