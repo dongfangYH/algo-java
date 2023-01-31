@@ -1,9 +1,9 @@
 package com.dongfangyh.algo;
 
-public class PrimeDetect {
+public class Iter {
 
 
-    public static boolean isPrime(int number){
+    public static boolean primeDetect(int number){
 
         if (number < 0){
             throw new IllegalArgumentException("arg should not be negative number.");
@@ -35,7 +35,7 @@ public class PrimeDetect {
 
     public static void main(String[] args) {
         for (int i = 0; i <= 100; i++ ){
-            boolean result = isPrime(i);
+            boolean result = primeDetect(i);
             System.out.println(i + " is " + (result ? "" : "not ") + "a prime number.");
         }
     }

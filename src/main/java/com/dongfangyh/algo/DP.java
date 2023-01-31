@@ -1,6 +1,22 @@
 package com.dongfangyh.algo;
 
-public class Lis {
+public class DP {
+
+    public static long fibonacci(int n){
+        if (n < 0) {
+            throw new IllegalArgumentException("n can not be negative.");
+        }
+        if (n == 0 || n == 1){
+            return 1l;
+        }
+        long[] store = new long[n+1];
+        store[0] = 1l;
+        store[1] = 1l;
+        for (int i = 2; i <= n; i++){
+            store[i] = (store[i - 1] + store[i - 2]);
+        }
+        return store[n];
+    }
 
     /**
      * example : arr = int[]{1, 3, 4, 2, 7, 9, 6, 8}
@@ -8,7 +24,7 @@ public class Lis {
      * @param arr
      * @return the length of maximum ascending sequence in @param arr
      */
-    public static int getResult(int[] arr){
+    public static int lis(int[] arr){
         if (arr.length == 0){
             return 0;
         }
@@ -35,9 +51,11 @@ public class Lis {
     }
 
     public static void main(String[] args) {
+        System.out.println(fibonacci(50));
+
         int[] testData = new int[]{1, 3, 4, 2, 7, 9, 6, 8};
-        System.out.println(getResult(testData));
+        System.out.println(lis(testData));
         int[] testData2 = new int[]{1, 3, 3, 4, 2, 7, 9, 6, 8};
-        System.out.println(getResult(testData2));
+        System.out.println(lis(testData2));
     }
 }
