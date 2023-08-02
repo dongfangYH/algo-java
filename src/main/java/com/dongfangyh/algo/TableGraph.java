@@ -38,6 +38,21 @@ public class TableGraph<T> {
         }
     }
 
+    public static void main(String[] args) {
+        String[][] edges = {
+                {"a", "b"},
+                {"a", "f"},
+                {"a", "c"},
+                {"b", "d"},
+                {"c", "e"},
+                {"d", "f"},
+                {"e", "f"}
+        };
+        TableGraph<String> tableGraph = new TableGraph<>(edges);
+        tableGraph.print();
+        System.out.println(tableGraph.bfs("a"));
+    }
+
     public void addEdge(T t1, T t2) {
         if (Objects.equals(t1, t2)){
             throw new RuntimeException("t1 equals t2");
@@ -47,7 +62,7 @@ public class TableGraph<T> {
     }
 
     public void addNode(T t) {
-        if (adjMap.containsKey(t)){
+        if (!adjMap.containsKey(t)){
             adjMap.put(t, new ArrayList<>());
         }
     }
@@ -71,5 +86,26 @@ public class TableGraph<T> {
     public void print() {
 
     }
+
+    public List<T> bfs(T start){
+        LinkedList<T> queue = new LinkedList<>();
+        List<T> result = new ArrayList<>();
+        Set<T> visited = new HashSet<>();
+        visited.add(start);
+        queue.offer(start);
+        while (!queue.isEmpty()){
+            T t = queue.poll();
+            result.add(t);
+            adjMap.get(t).forEach(e -> {
+                if (!visited.contains(e)){
+                    queue.offer(e);
+                    visited.add(e);
+                }
+            });
+
+        }
+        return result;
+    }
+
 
 }
