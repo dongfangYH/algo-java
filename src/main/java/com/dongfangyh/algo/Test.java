@@ -1,6 +1,8 @@
 package com.dongfangyh.algo;
 
 import java.util.Arrays;
+import java.util.Map;
+import java.util.function.Consumer;
 
 /**
  * @author henry.liu
@@ -8,10 +10,12 @@ import java.util.Arrays;
  **/
 public class Test {
     public static void main(String[] args) {
-        int[] a = new int[]{1, 3, 6, 8, 11, 11, 12, 17};
+
+        System.getProperties().entrySet().forEach(System.out::println);
+        /*int[] a = new int[]{1, 3, 6, 8, 11, 11, 12, 17};
         int[] b = new int[]{2, 5, 7, 15};
         int[] rs = combine(a, b);
-        System.out.println(Arrays.toString(rs));
+        System.out.println(Arrays.toString(rs));*/
     }
 
     private static int[] combine(int[] a, int[] b) {
